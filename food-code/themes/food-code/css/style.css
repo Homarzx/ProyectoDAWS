@@ -978,10 +978,14 @@ footer .block span {
 	margin-bottom: 0;
 }
 
-.blog-zone{
-  
-  
+.blog-zone1{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  text-align: justify;
+ 
 }
+
 
 /*	Blog Single Page Start.......
     ==================================================*/
