@@ -450,6 +450,56 @@ header {
 .catagorie-box .catagotie-head h3 {
 	color: #121212;
 }
+/*	 Catagorie1 Start
+    ==================================================*/
+	#catagorie1 .block {
+		margin-top: 30px;
+	}
+	
+	#catagorie1 .block .thumbnail {
+		border: none;
+		cursor: pointer;
+	}
+	#catagorie1 .block .thumbnail:hover .catagotie-head img {
+	 opacity: 0.7;
+	}
+	#catagorie1 .block .thumbnail a img  {
+		width: 100%;
+		border:1px solid #dedede;
+		-webkit-transition: all .3s ease-in-out;
+		-moz-transition: all .3s ease-in-out;
+		-ms-transition: all .3s ease-in-out;
+		-o-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+	}
+	#catagorie1 .block .thumbnail a img:hover {
+		opacity: 0.7;
+	}
+	#catagorie1 .block .thumbnail:hover h3 {
+		color: #fabfb7;
+	}
+	#catagorie1 .block .thumbnail a  h3 {
+		font-weight: 500;
+		-webkit-transition: all .3s ease-in-out;
+		-moz-transition: all .3s ease-in-out;
+		-ms-transition: all .3s ease-in-out;
+		-o-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+	}
+	#catagorie1 .block .thumbnail .caption p {
+		font-size: 14px;
+		color: #4b4b4b;
+		font-weight: 300;
+	}
+	#catagorie1 .block .thumbnail .caption {
+		padding: 0;
+	}
+	.catagorie1-box p span {
+		font-weight: bold;
+	}
+	.catagorie1-box .catagotie-head h3 {
+		color: #121212;
+	}
 
 /*	 New Products Start
     ==================================================*/
