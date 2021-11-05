@@ -1309,3 +1309,19 @@ footer .block span {
 	text-align: center;
 
 }
+/*	Contactanos.......
+    ==================================================*/
+
+.contac-sidebar img{
+	width: 100%;
+    border-radius: 2px;
+}
+.contact-comment {
+    border: 1px solid #dedede;
+    margin-top: 30px;
+    padding: 10px;
+}
+.contact-comment >h5{
+	text-align: center;
+	font-size: 34px;
+}
