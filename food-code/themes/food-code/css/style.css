@@ -1217,6 +1217,12 @@ footer .block span {
     display: flex;
     flex-direction: column;
 }
+	.somos-box {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 
 #shop .products-heading h2 {
@@ -1273,5 +1279,28 @@ footer .block span {
 .top-catagori-heading {
 	margin-top: 0;
 }
+}/* --Algo raro---*/
 
+/*	Quienes somos.......
+    ==================================================*/
+.somos-box{
+	display: flex;
+	background-color: #fabfb7;
+}
+.somos-box img {
+		width: 30%;
+		border: 30px solid #fff;
+		margin: 20px;
+}
+.somos-post-body {
+    padding: 20px;
+}
+.somos-post-body p {
+    font-size: 16px;
+    color: #555;
+    padding-top: 10px;
+}
+.somos-post-body h2,p{
+	text-align: center;
 
+}
