@@ -1222,6 +1222,8 @@ footer .block span {
     flex-direction: column;
 }
 
+}
+
 
 
 
@@ -1279,7 +1281,7 @@ footer .block span {
 .top-catagori-heading {
 	margin-top: 0;
 }
-}/* --Algo raro---*/
+/* --Algo raro---*/
 
 /*	Quienes somos.......
     ==================================================*/
@@ -1288,9 +1290,12 @@ footer .block span {
 	background-color: #fabfb7;
 }
 .somos-box img {
-		width: 30%;
+		width: 100%;
 		border: 30px solid #fff;
-		margin: 20px;
+		
+}
+.somos-img-box{
+	margin:10px;
 }
 .somos-post-body {
     padding: 20px;
