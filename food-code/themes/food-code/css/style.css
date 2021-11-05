@@ -1213,6 +1213,9 @@ footer .block span {
     .product-grid ul li {
         width: 100%;
     }
+    .blog-zone1 {
+    display: flex;
+    flex-direction: column;
 }
 
 
