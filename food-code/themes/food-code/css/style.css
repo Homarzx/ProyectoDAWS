@@ -1221,6 +1221,12 @@ footer .block span {
     display: flex;
     flex-direction: column;
 }
+.contac-sidebar > img{
+	display: none;
+}
+.map div iframe{
+	width: auto;
+}
 
 }
 
