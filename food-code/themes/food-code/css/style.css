@@ -405,6 +405,12 @@ header {
 #catagorie .block {
 	margin-top: 30px;
 }
+.media-heading a{ color: white; }
+.media-heading a:hover {
+	color:violet;
+  }
+.pull-left i{ color:violet; }
+.infoAdicional li a{ color: white; }
 
 #catagorie .block .thumbnail {
 	border: none;
