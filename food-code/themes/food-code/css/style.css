@@ -1334,10 +1334,13 @@ footer .block span {
 .somos-box img {
 		width: 100%;
 		border: 30px solid #fff;
+
 		
 }
 .somos-img-box{
 	margin:10px;
+	margin-top: 40px;
+	
 }
 .somos-post-body {
     padding: 20px;
@@ -1346,6 +1349,7 @@ footer .block span {
     font-size: 16px;
     color: #555;
     padding-top: 10px;
+	text-align: justify;
 }
 .somos-post-body h2,p{
 	text-align: center;
