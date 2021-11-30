@@ -16,7 +16,37 @@ h6 { font-size: 20px; }
 ul {padding-left: 0;}
 /*Add space between sections*/
 section+section { margin-top: 50px; }
+.card-img-top{    
+	width: 100%;
+	border-top-left-radius: calc(.25rem - 1px);
+	border-top-right-radius: calc(.25rem - 1px);
+}
 
+.card {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: 0.25rem;
+}
+.bg-gray {
+    background: #F5F5F5;
+}
+.card-text{
+    text-align: justify;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+
+	
+	
 .block-heading {
 	background-image: url("../images/titleBorder.png");
 	background-repeat: repeat-x;
@@ -648,7 +678,7 @@ footer .block span {
 }
 .copyright-text {
 	margin-top: 12px;
-	color: #B6B6B6;
+	color:#575656;
 }
 .copyright-text a {
 	color: #fabfb7;
