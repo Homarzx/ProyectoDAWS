@@ -10,6 +10,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Css -->
+	<link href='https://unpkg.com/intro.js/minified/introjs.min.css' rel='stylesheet'>
+	<link href='https://unpkg.com/intro.js/themes/introjs-modern.css' rel='stylesheet'>
+	
 	<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" />
 	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/owl.theme.css">
@@ -179,11 +182,11 @@
 
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      	<ul class="nav navbar-nav nav-main">
-		        	<li class="active"><a href="index.html">Inicio</a></li>
-					<li><a href="products.html">Tienda</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contactanos.html">Contáctanos</a></li>
-					<li><a href="quienes-somos.html">Quiénes somos</a></li>
+		        	<li class="active inicio"><a href="index.html">Inicio</a></li>
+					<li class="tienda"><a href="products.html">Tienda</a></li>
+					<li class="blog"><a href="blog.html">Blog</a></li>
+					<li class="contactanos"><a href="contactanos.html">Contáctanos</a></li>
+					<li class="qsomos"><a href="quienes-somos.html">Quiénes somos</a></li>
 					
 					
 		        </ul> <!-- End of /.nav-main -->
@@ -221,7 +224,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="block">
-						<div class="media">
+						<div class="media instagram">
 							<div class="pull-left" href="#">
 						    	<i class="fa fa-instagram"></i>
 						  	</div>
@@ -234,7 +237,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="block">
-						<div class="media"> 
+						<div class="media ubicacion"> 
 							<div class="pull-left" href="#"> <a href="contactanos.html" >
 								<i class="fa  fa-map-marker"></i>
 								</a>
@@ -248,7 +251,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="block">
+					<div class="block pedidos">
 						<div class="media">
 							<div class="pull-left" href="#"> <a href="products.html" >
 						    	<i class="fa fa-shopping-cart"></i>
@@ -504,7 +507,7 @@
 						<p></p>
             			<li><a href="contactanos.html">Ubicación de la tienda</a></li>
 						<p></p>
-            			<li><a href="equipoDesarrollo.html">Equipo de desarrollo</a></li>
+            			<li class="equipoDesa"><a href="equipoDesarrollo.html">Equipo de desarrollo</a></li>
 						<p></p>
 						</div>
 						<p></p>
@@ -517,7 +520,7 @@
 				</div> <!-- End Of Col-md-3 -->
 				<div class="col-md-4">
 					<div class="block">
-						<h4>PRÓXIMOS ARTÍCULOS</h4>
+						<h4 class="proxArticulos">ARTÍCULOS RECIENTES</h4>
 						<div class="media">
 						  	<a class="pull-left" href="blog-single.html">
 						    	<img class="media-object" src="images/pastel1.jpg" alt="...">
@@ -587,5 +590,54 @@
 	</footer> <!-- End Of Footer -->
 	
 	<a id="back-top" href="#"></a>
+	<script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+	<script>
+		introJs().setOptions({
+			steps: [{
+				intro: "Bienvenid@ a Zupastry!"}, {
+				element: document.querySelector('.navbar'),
+				intro: "Estas son las secciones principales donde puedes navegar!",}
+				,{
+				element:document.querySelector('.inicio'),
+				intro:"Encontrarás información variada sobre Zupastry.",},
+				{
+				element:document.querySelector('.tienda'),
+				intro:"Aqui accederás al catálogo de  productos en sus diversas categorías.",},
+				
+				{element:document.querySelector('.blog'),
+				intro:"Encuentra artículos sobre el mundo de la pastelería.",},
+				{element:document.querySelector('.contactanos'),
+				intro:"Información para estar en contacto, además de visualizar un mapa de la ubicación de la tienda.",},
+				{element:document.querySelector('.qsomos'),
+				intro:"Conocerás sobre los inicios de Zupastry.",},
+				{element:document.querySelector('.instagram'),
+				intro:"Te dirigirás al enlace del perfil en Instagram de Zupastry.",},
+				{element:document.querySelector('.ubicacion'),
+				intro:"Encontrarás el mapa donde verás la ubicación de Zupastry.",},
+				{element:document.querySelector('.pedidos'),
+				intro:"Es una alternativa para realizar pedidos.",
+				},
+				{element:document.querySelector('.block-heading'),
+				intro:"Esta es una galería  con algunos de los pasteles que te enamoraran.",},
+				{element:document.querySelector('.products-heading'),
+				intro:"Estos son algunos de las nuevas opciones de productos.",},
+				{element:document.querySelector('.connect-heading'),
+				intro:"Enlaces para las redes oficiales de Zupastry.",
+				},
+				{element:document.querySelector('.equipoDesa'),
+				intro:"Encontrarás información sobre el equipo de desarrollo del sitio web de Zupastry.",
+				},
+				{element:document.querySelector('.proxArticulos'),
+				intro:"Sección de artículos recientes de Zupastry .",
+				
+				
+			}],
+			showProgress:true,
+			showBullets:false,
+			disableInteraction:true,
+			
+		
+		}).start();
+	</script>
 </body>
 </html>
