@@ -1,1 +1,1 @@
-<?php include_once("themes/food-code/index.html"); ?>
+<?php include_once("food-code/index.html"); ?>
