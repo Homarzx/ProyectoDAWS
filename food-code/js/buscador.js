@@ -31,10 +31,13 @@ function filtrado() {
 		console.log(descripcion);
 
 
-	    if(!titulo.textContent.includes(texto_boton)){
-	    		$(item).hide();
-	    	
-	    	
+	   if(titulo.textContent.includes(texto_boton)){
+	    		item.style.display="block";
+	    		
+	    }
+	    else{
+	    	   item.style.display="none";
+
 	    }
 
 	    	
