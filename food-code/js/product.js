@@ -87,3 +87,8 @@ if ( typeof define === 'function' && define.amd ) {
 }
 
 })( window );
+
+function car1(x){
+    alert("Se ha añadido con exito");
+    console.log(x);
+}
