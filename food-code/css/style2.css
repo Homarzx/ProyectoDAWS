@@ -1,0 +1,7 @@
+div[class*="app-main_"]{
+	background-color:#feebed;
+}
+
+div[class*="app-header"],div[class*="app-sidebar"]{
+	background-color: #FABFB7;
+}
