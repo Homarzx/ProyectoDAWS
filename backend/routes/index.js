@@ -3,6 +3,7 @@ var router = express.Router();
 const Sequelize = require('sequelize');
 const Producto = require('../models').producto;
 const Cliente = require('../models').cliente;
+const Pedido = require('../models').pedido;
 
 /* GET home page*/
 router.get('/', function(req, res, next) {
@@ -26,6 +27,18 @@ router.get('/clientes', function(req, res, next) {
 })
 .then(clientes => {
     res.render('clientes', { title: 'My Dashboard :: Clientes', clientes: clientes });
+})
+.catch(error => res.status(400).send(error))
+
+});
+
+router.get('/pedidos', function(req, res, next) {
+  Pedido.findAll({
+    
+    attributes: { exclude: ["updatedAt"] }
+})
+.then(pedidos => {
+    res.render('pedidos', { title: 'My Dashboard :: Pedidos', pedidos: pedidos });
 })
 .catch(error => res.status(400).send(error))
 
