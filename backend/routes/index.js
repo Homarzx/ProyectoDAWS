@@ -133,6 +133,85 @@ router.get('/clientes', function(req, res, next) {
 
 });
 
+/*POST clientes */
+router.post('/api/clientes', (req, res, next) => {
+ const cliente =  {
+    cedula: req.body.cedula,
+    nombre: req.body.nombre ,
+    apellido: req.body.apellido,
+    telefono: req.body.telefono, 
+    correo: req.body.correo, 
+    usuario: req.body.usuario
+ }
+ models.clientes.create(cliente)
+ .then(clientes =>{
+    res.send(clientes);
+
+ })
+ .catch(err => res.status(400).send(error))
+});
+
+
+
+ /* PUT clientes */
+router.put('/clientes', (req, res, next) => {
+  const cliente =  {
+    cedula: req.body.cedula,
+    nombre: req.body.nombre ,
+    apellido: req.body.apellido,
+    telefono: req.body.telefono, 
+    correo: req.body.telefono, 
+    usuario: req.body.usuario
+  }
+  .then(()=>{
+     res.send("exito");  
+     
+  })
+  .catch(err => res.status(400).send(error))
+
+
+});
+
+/* GET clientes by ID. */
+ router.get('/api/clientes/:cedula', (req, res, next) => {
+    models.clientes.findAll({ 
+       where: {
+          cedula:{
+            [Op.eq]: req.params.cedula
+          }
+         },
+       attributes: { exclude: ["updatedAt"] }
+     })
+     .then(clientes => {
+        res.send(clientes)
+     })
+     .catch(error => res.status(400).send(error))
+
+ });
+
+
+/* DELETE clientes */
+router.delete('/api/clientes', (req, res, next) => {
+
+  models.clientes.destroy({
+     where:{
+        cedula: req.body.cedula
+     }
+  })
+  .then(()=>{
+     res.send("exito");
+
+  })
+  .catch(err => res.status(400).send(error))
+
+});
+
+
+
+
+
+
+
 /*PEDIDOS*/
 
 router.get('/pedidos', function(req, res, next) {
@@ -218,6 +297,8 @@ router.delete('/api/categorias', (req, res, next) => {
  });
 
 
- 
+
+
+
 
 module.exports = router;
