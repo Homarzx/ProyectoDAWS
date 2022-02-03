@@ -296,6 +296,25 @@ router.delete('/api/categorias', (req, res, next) => {
  
  });
 
+ /* PUT categorias */
+router.put('/api/categorias', (req, res, next) => {
+   const categoria =  {
+     nombre: req.body.nombre,
+   }
+   models.categorias.update(categoria,{
+      where:{
+         id: req.body.id
+      }
+   })
+   .then(()=>{
+      res.send("exito");  
+      
+   })
+   .catch(err => res.status(400).send(error))
+ 
+ 
+ });
+
 
 
 

@@ -71,10 +71,57 @@ var eliminarCategoria = () => {
 	})
 	
 }
+//Editar
+var editarCategoria = () => {
+
+	on(document,'click', "button.btn.btn-sm.btn-outline-secondary.badge",e =>{
+		console.log("Boton Editar")
+		
+		const fila = e.target.parentNode.parentNode
+		const ide= fila.children[0].innerHTML
+		console.log(ide)
+		fetch('http://localhost:3000/dashboard/api/categorias/'+ide)
+		.then(texto => texto.json())
+		.then(clientes => {
+			for(let cliente of clientes) {
+				var texto=document.getElementsByClassName("form-control")
+				texto[2].value=cliente.nombre
+				
+			
+			opcion="editar"	
+			var boton=document.querySelector("button.botonGuardar.btn-primary")
+			console.log(opcion)
+	
+			boton.addEventListener('click', (e)=>{
+				console.log("entre")
+			const myDataObject ={ id: ide,
+				nombre:texto[2].value
+				}
+
+			fetch('http://localhost:3000/dashboard/api/categorias/', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				
+				body: JSON.stringify(myDataObject)
+				})
+			.then(response =>response.json( ))
+			})
+
+		}
+
+		})
+
+	})
+
+}
 
 window.onload = () => {
 	crearCategoria()
 	eliminarCategoria()
+	editarCategoria()
+
 	
 
 }

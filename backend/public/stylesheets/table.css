@@ -151,3 +151,10 @@ table.table .avatar {
     margin-top: 10px;
     font-size: 13px;
 }
+
+.btn-outline-secondary:hover {
+    color: #9b2929
+   }
+.badge{
+     color:#9b2929
+}

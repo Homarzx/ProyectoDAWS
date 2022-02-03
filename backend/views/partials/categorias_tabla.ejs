@@ -69,13 +69,53 @@
                           <td><%= categoria.id %></td>
                           <td><%= categoria.nombre %></td> 
                           <td>
-                              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-editar">Edit</button>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip" data-target="#user-form-modals"><i class="material-icons">&#xE5C9;</i></a>
                           </td>
                         </tr>
                       <% }); %>
                 </tbody>
             </table>
+            <div class="editarForm">
+              <div class="modal fade" role="dialog" tabindex="-1" id="user-form-editar">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Editar Categoria</h5>
+                      <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="py-1">
+                        <form class="form" novalidate="">
+                          <div class="row">
+                            <div class="col">
+                              
+                              <!-- Nombre y Apellido -->
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Nombre Categoria</label>
+                                    <input class="form-control" type="text" name="name" placeholder="Ingrese el Nombre de la Categoria" >
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="col d-flex justify-content-end">
+                                <button class="botonGuardar btn-primary" type="submit">Guardar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
