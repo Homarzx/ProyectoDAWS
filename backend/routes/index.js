@@ -152,32 +152,36 @@ router.post('/api/clientes', (req, res, next) => {
 });
 
 
-
- /* PUT clientes */
-router.put('/clientes', (req, res, next) => {
-  const cliente =  {
-    cedula: req.body.cedula,
-    nombre: req.body.nombre ,
-    apellido: req.body.apellido,
-    telefono: req.body.telefono, 
-    correo: req.body.telefono, 
-    usuario: req.body.usuario
-  }
-  .then(()=>{
-     res.send("exito");  
-     
-  })
-  .catch(err => res.status(400).send(error))
-
-
-});
+/* PUT clientes */
+router.put('/api/clientes', (req, res, next) => {
+   const cliente =  {
+      cedula: req.body.cedula,
+      nombre: req.body.nombre ,
+      apellido: req.body.apellido,
+      telefono: req.body.telefono, 
+      correo: req.body.telefono, 
+      usuario: req.body.usuario
+    }
+   models.clientes.update(cliente,{
+      where:{
+         id: req.body.id
+      }
+   })
+   .then(()=>{
+      res.send("exito");  
+      
+   })
+   .catch(err => res.status(400).send(error))
+ 
+ 
+ });
 
 /* GET clientes by ID. */
- router.get('/api/clientes/:cedula', (req, res, next) => {
+ router.get('/api/clientes/:id', (req, res, next) => {
     models.clientes.findAll({ 
        where: {
-          cedula:{
-            [Op.eq]: req.params.cedula
+          id:{
+            [Op.eq]: req.params.id
           }
          },
        attributes: { exclude: ["updatedAt"] }

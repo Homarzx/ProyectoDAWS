@@ -75,8 +75,72 @@ var eliminarCliente = () => {
 		
 	}
 
+//Editar
+var editarCliente = () => {
+
+	on(document,'click', "button.btn.btn-sm.btn-outline-secondary.badge",e =>{
+		console.log("Boton Editar")
+		
+		const fila = e.target.parentNode.parentNode
+		const ide= fila.children[0].innerHTML
+		console.log(ide)
+		fetch('http://localhost:3000/dashboard/api/clientes/'+ide)
+		.then(texto => texto.json())
+		.then(clientes => {
+			var texto=document.getElementsByClassName("form-control")
+			for(let cliente of clientes) {
+				
+				var texto=document.getElementsByClassName("form-control")
+				texto[8].value=cliente.nombre
+				texto[9].value=cliente.apellido
+				texto[10].value=cliente.cedula
+				texto[11].value=cliente.telefono
+				texto[12].value=cliente.correo
+				texto[13].value=cliente.usuario
+				texto[14].value=cliente.contrasena
+				
+			
+			opcion="editar"	
+			var boton=document.querySelector("button.botonGuardar.btn-primary")
+			console.log(opcion)
+	
+			boton.addEventListener('click', (e)=>{
+				console.log("entre")
+			const myDataObject ={ id: ide,
+				cedula: texto[10].value,
+				nombre:texto[8].value,
+				apellido:texto[9].value,
+				
+				telefono: texto[11].value,
+				correo:texto[12].value,
+				usuario: texto[13].value,
+				contrasena: texto[14].value
+				}
+
+			fetch('http://localhost:3000/dashboard/api/clientes/', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				
+				body: JSON.stringify(myDataObject)
+				})
+			.then(response =>response.json( ))
+			location.reload()
+			})
+		}
+		})
+		
+		
+
+
+	
+})
+}
+
 window.onload = () => {
 	crearCliente()
 	eliminarCliente()
+	editarCliente()
 
 }

@@ -121,13 +121,95 @@
                           <td><%= cliente.correo %></td>
                           <td><%= cliente.usuario %></td>
                           <td>
-                              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-editar">Edit</button>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                           </td>
                         </tr>
                       <% }); %>
                 </tbody>
             </table>
+            <div class="editarForm">
+              <div class="modal fade" role="dialog" tabindex="-1" id="user-form-editar">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Editar Cliente</h5>
+                      <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="py-1">
+                        <form class="form" novalidate="">
+                          <div class="row">
+                            <div class="col">
+                              
+                              <!-- Nombre y Apellido -->
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Nombre </label>
+                                    <input class="form-control" type="text" name="name" placeholder="Ingrese el Nombre del Cliente" value="nombre ">
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input class="form-control" type="text" name="name" placeholder="Ingrese el Apellido del Cliente" value="apellido ">
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Cedula</label>
+                                    <input class="form-control" type="text" name="cedula" placeholder="Ingrese la cedula del cliente" value="cedula" >
+                                  </div>
+                                </div>
+                               
+                              
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                  <label>Telefono</label>
+                                  <input class="form-control" type="text" name="telefono" placeholder=09789 value="0987947900">
+                                </div>
+                              </div>
+                            
+                          </div> 
+                            <div class="col">
+                                    <div class="form-group">
+                                      <label>Correo</label>
+                                      <input class="form-control" type="text" name="correo"  placeholder="Ingrese el correo del cliente" value="correo">
+                                    </div>
+                            </div>  
+                            <div class="col">
+                                <div class="form-group">
+                                  <label>Usuario</label>
+                                  <input class="form-control" type="text" name="usuario"  placeholder="Ingrese el usuario del cliente" value="usuario">
+                                </div>
+                            </div> 
+                            <div class="col">
+                              <div class="form-group">
+                                <label>Contraseña</label>
+                                <input class="form-control" type="text" name="usuario"  placeholder="Ingrese la contraseñs del cliente" value="contraseña">
+                              </div>
+                          </div> 
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="col d-flex justify-content-end">
+                                <button class="botonGuardar btn-primary" type="submit">Guardar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
