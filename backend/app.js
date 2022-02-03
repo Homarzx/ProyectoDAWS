@@ -7,8 +7,19 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 
 var app = express();
+
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['DAWM'],
+  
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -9,10 +9,24 @@ var models = initModels(sequelize);
 
 const Pedido = require('../models').pedido;
 
+let bd = {
+   'usuario': 'alevquim',
+   'contrasenia': 'password'
+}
+   
+   var auth = function(req, res, next) {
+      if (req.session && req.session.usuario === bd['usuario'])
+        return next();
+      else
+        return res.sendStatus(401);
+   };
+
 /* GET home page*/
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/',auth, function(req, res, next) {
+   let usuario = req.cookies.usuario;
+  res.render('index', { title: 'Express' , usuario: usuario });
 });
+
 /* GET productos. */
 router.get('/api/productos', (req, res, next) => {
    models.productos.findAll({ 
