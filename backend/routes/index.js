@@ -1,17 +1,57 @@
 var express = require('express');
 var router = express.Router();
 const Sequelize = require('sequelize');
-const Producto = require('../models').producto;
-const Cliente = require('../models').cliente;
+const { Op } = require("sequelize");
+const sequelize = require('../models/index.js').sequelize;
+var initModels = require("../models/init-models");
+var models = initModels(sequelize);
+
+
 const Pedido = require('../models').pedido;
 
 /* GET home page*/
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+/* GET productos. */
+router.get('/api/productos', (req, res, next) => {
+   models.productos.findAll({ 
+      include: [{model: models.categorias,
+         attributes: ['id','nombre']
+       }],
+      attributes: { exclude: ["updatedAt"] }
+    })
+    .then(productos => {
+       res.send(productos)
+    })
+    .catch(error => res.status(400).send(error))
+ });
+ 
+ /* GET productos by ID. */
+ router.get('/api/productos/:id', (req, res, next) => {
+    models.productos.findAll({ 
+      include: [{model: models.categorias,
+         attributes: ['id','nombre']
+       }],
+       where: {
+          id:{
+            [Op.eq]: req.params.id
+          }
+         },
+       attributes: { exclude: ["updatedAt"] }
+     })
+     .then(productos => {
+        res.send(productos)
+     })
+     .catch(error => res.status(400).send(error))
+ 
+ });
 
 router.get('/productos', function(req, res, next) {
-  Producto.findAll({
+  models.productos.findAll({
+    include: [{model: models.categorias,
+      attributes: ['id','nombre']
+    }],
     attributes: { exclude: ["updatedAt"] }
 })
 .then(productos => {
@@ -20,9 +60,70 @@ router.get('/productos', function(req, res, next) {
 .catch(error => res.status(400).send(error))
 
 });
+/* PUT productos */
+router.put('/productos', (req, res, next) => {
+  const producto =  {
+    nombre: req.body.nombre,
+    id_categoria: req.body.id_categoria ,
+    stock: req.body.stock,
+    precio: req.body.precio, 
+    imagen: req.body.imagen, 
+    descripcion: req.body.descripcion 
+  }
+  models.productos.update(producto,{
+     where:{
+        id: req.body.id
+     }
+  })
+  .then(()=>{
+     res.send("exito");  
+     
+  })
+  .catch(err => res.status(400).send(error))
+
+
+});
+
+/* DELETE productos */
+router.delete('/api/productos', (req, res, next) => {
+  
+  models.productos.destroy({
+     where:{
+        id: req.body.id
+     }
+  })
+  .then(()=>{
+     res.send("exito");
+     
+  })
+  .catch(err => res.status(400).send(error))
+
+});
+
+/*POST productos */
+router.post('/api/productos', (req, res, next) => {
+ const producto =  {
+    nombre: req.body.nombre,
+    id_categoria: req.body.id_categoria ,
+    stock: req.body.stock,
+    precio: req.body.precio, 
+    imagen: req.body.imagen, 
+    descripcion: req.body.descripcion 
+ }
+ models.productos.create(producto)
+ .then(productos =>{
+    res.send(productos);
+    
+ })
+ .catch(err => res.status(400).send(error))
+});
+
+
+
+/*CLIENTES*/
 
 router.get('/clientes', function(req, res, next) {
-  Cliente.findAll({
+  models.clientes.findAll({
     attributes: { exclude: ["updatedAt"] }
 })
 .then(clientes => {
@@ -31,6 +132,8 @@ router.get('/clientes', function(req, res, next) {
 .catch(error => res.status(400).send(error))
 
 });
+
+/*PEDIDOS*/
 
 router.get('/pedidos', function(req, res, next) {
   Pedido.findAll({
@@ -44,24 +147,77 @@ router.get('/pedidos', function(req, res, next) {
 
 });
 
- /*POST productos 
-router.post('/productos', (req, res, next) => {
-  const producto =  {
+/*CATEGORIA*/
+
+/*GET CATEGORIA*/
+
+router.get('/categorias', function(req, res, next) {
+  models.categorias.findAll({
+    attributes: { exclude: ["updatedAt"] }
+})
+.then(categorias => {
+    res.render('categorias', { title: 'My Dashboard :: Categorias', categorias: categorias });
+})
+.catch(error => res.status(400).send(error))
+
+});
+router.post('/api/categorias', (req, res, next) => {
+  const categoria =  {
      nombre: req.body.nombre,
-     //id_categoria: req.body.id_categoria ,
-     stock: req.body.stock,
-     precio: req.body.precio, 
-     imagen: req.body.imagen, 
-     descripcion: req.body.descripcion 
   }
-  Producto.create(producto)
-  .then(productos =>{
-     res.send(productos);
+  models.categorias.create(categoria)
+  .then(categorias =>{
+     res.send(categorias);
      
   })
   .catch(err => res.status(400).send(error))
 });
-*/
+/* GET categorias. */
+router.get('/api/categorias', (req, res, next) => {
+   models.categorias.findAll({ 
+      
+      attributes: { exclude: ["updatedAt"] }
+    })
+    .then(categorias => {
+       res.send(categorias)
+    })
+    .catch(error => res.status(400).send(error))
+ });
+ 
+ /* GET categorias by ID. */
+ router.get('/api/categorias/:id', (req, res, next) => {
+    models.categorias.findAll({ 
+      
+       where: {
+          id:{
+            [Op.eq]: req.params.id
+          }
+         },
+       attributes: { exclude: ["updatedAt"] }
+     })
+     .then(categorias => {
+        res.send(categorias)
+     })
+     .catch(error => res.status(400).send(error))
+ 
+ });
+ /* DELETE CATEGORIAS */
+router.delete('/api/categorias', (req, res, next) => {
+  
+   models.categorias.destroy({
+      where:{
+         id: req.body.id
+      }
+   })
+   .then(()=>{
+      res.send("exito");
+      
+   })
+   .catch(err => res.status(400).send(error))
+ 
+ });
 
+
+ 
 
 module.exports = router;

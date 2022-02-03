@@ -1,0 +1,93 @@
+<main class="col-md-8 ms-sm-auto col-lg-10 px-md-4">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Categorias</h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Añadir Categoria</button>
+
+                    </div>
+                     
+                </div>
+               
+            </div>
+            <div class="cuerpoForm">
+                 <!--FORM-->
+             <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Añadir Categoria</h5>
+                      <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="py-1">
+                        <form class="form" novalidate="">
+                          <div class="row">
+                            <div class="col">
+                              
+                              <!-- Nombre y Apellido -->
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Nombre Categoria</label>
+                                    <input class="form-control" type="text" name="name" placeholder="Ingrese el Nombre de la Categoria" >
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+            
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categorias.forEach(function(categoria){ %>
+                        <tr>
+                          <td><%= categoria.id %></td>
+                          <td><%= categoria.nombre %></td> 
+                          <td>
+                              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                          </td>
+                        </tr>
+                      <% }); %>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>  
+</main>
