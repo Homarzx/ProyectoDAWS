@@ -141,7 +141,8 @@ router.post('/api/clientes', (req, res, next) => {
     apellido: req.body.apellido,
     telefono: req.body.telefono, 
     correo: req.body.correo, 
-    usuario: req.body.usuario
+    usuario: req.body.usuario,
+    contrasena: req.body.contrasena
  }
  models.clientes.create(cliente)
  .then(clientes =>{
@@ -160,7 +161,8 @@ router.put('/api/clientes', (req, res, next) => {
       apellido: req.body.apellido,
       telefono: req.body.telefono, 
       correo: req.body.telefono, 
-      usuario: req.body.usuario
+      usuario: req.body.usuario,
+      contrasena: req.body.contrasena
     }
    models.clientes.update(cliente,{
       where:{
@@ -319,6 +321,54 @@ router.put('/api/categorias', (req, res, next) => {
  
  });
 
+ //Administrador
+ router.post('/api/administrador', (req, res, next) => {
+   const administrador =  {
+      cedula: req.body.cedula,
+      nombre: req.body.nombre ,
+      apellido: req.body.apellido,
+      telefono: req.body.telefono, 
+      correo: req.body.correo, 
+      usuario: req.body.usuario,
+      contrasena: req.body.contrasena
+   }
+   models.administrador.create(administrador)
+   .then(administradores =>{
+      res.send(administradores);
+  
+   })
+   .catch(err => res.status(400).send(error))
+  });
+ /* GET categorias. */
+ router.get('/api/administrador', (req, res, next) => {
+    models.administrador.findAll({ 
+       
+       attributes: { exclude: ["updatedAt"] }
+     })
+     .then(categorias => {
+        res.send(categorias)
+     })
+     .catch(error => res.status(400).send(error))
+  });
+  
+  /* GET categorias by ID. */
+  router.get('/api/administrador/:id', (req, res, next) => {
+     models.administrador.findAll({ 
+       
+        where: {
+           id:{
+             [Op.eq]: req.params.id
+           }
+          },
+        attributes: { exclude: ["updatedAt"] }
+      })
+      .then(administradores => {
+         res.send(administradores)
+      })
+      .catch(error => res.status(400).send(error))
+  
+  });
+  
 
 
 
