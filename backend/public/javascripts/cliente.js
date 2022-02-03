@@ -11,16 +11,18 @@ var crearCliente = () => {
 		console.log("Boton Crear")
 		opcion="crear"		
 		var boton=document.querySelector("button.btn.btn-primary")
+		
+		
 		boton.addEventListener('click', (e)=>{
 		var texto=document.getElementsByClassName("form-control")
-		console.log(texto[3].value)
 		const myDataObject ={ 
-			cedula:texto[1].value,
-			nombre:texto[2].value,
-			apellido:texto[3].value,
+			cedula:texto[3].value,
+			nombre:texto[1].value,
+			apellido:texto[2].value,
 			telefono:texto[4].value,
 			correo:texto[5].value,
-			usuario:texto[6].value
+			usuario:texto[6].value,
+			contrasena:texto[7].value
 			}
 			fetch('http://localhost:3000/dashboard/api/clientes', {
 				method: 'POST',
@@ -44,10 +46,12 @@ var eliminarCliente = () => {
 		on(document,'click', 'a.delete',e =>{
 			console.log("Boton Eliminar")
 			const fila = e.target.parentNode.parentNode.parentNode
-			const cedule= fila.children[0].innerHTML
+			const cedule= fila.children[1].innerHTML
+			const id=fila.children[0].innerHTML
 			console.log(cedule) 
+			console.log("hola")
 			const myDataObject ={ cedula: cedule}
-			let isDelete=confirm(`¿Estas seguro que desea eliminar el cliente con la cedula: ${cedule}?`)
+			let isDelete=confirm(`¿Estas seguro que desea eliminar el cliente con la cedula: ${cedule} e id : ${id}?`)
 			if(isDelete){
 				
 			fetch('http://localhost:3000/dashboard/api/clientes', {
