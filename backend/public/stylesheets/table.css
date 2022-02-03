@@ -11,7 +11,7 @@
 .table-title {
     padding-bottom: 15px;
     background: #299be4;
-    color: #fff;
+    color: rgb(0, 0, 0);
     padding: 16px 30px;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
@@ -24,7 +24,7 @@
     color: #566787;
     float: right;
     font-size: 13px;
-    background: #fff;
+    background: #f7ecec;
     border: none;
     min-width: 50px;
     border-radius: 2px;
