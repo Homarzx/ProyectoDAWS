@@ -61,7 +61,7 @@ router.get('/productos', function(req, res, next) {
 
 });
 /* PUT productos */
-router.put('/productos', (req, res, next) => {
+router.put('/api/productos', (req, res, next) => {
   const producto =  {
     nombre: req.body.nombre,
     id_categoria: req.body.id_categoria ,
