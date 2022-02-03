@@ -6,6 +6,7 @@
 
     <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
     <canvas class="my-4 w-100" id="myChart1" width="300" height="100"></canvas>
+    <canvas class="my-4 w-100" id="myChart2" width="300" height="100"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
@@ -38,7 +39,42 @@
       })
       
     </script>
+    
+    <script>
+      var ctx2 = document.getElementById('myChart2')
+        var myChart2 = new Chart(ctx2, {
+            type:'line',
+            data:{
+                datasets: [{
+                  label: 'Precios de Productos',
+                  borderColor:"orange"
+                }]
+            },
+            options:{
+                scales:{
+                    y:{
+                        beginAtZero:true
+                    }
+                }
+            }
+        })
 
+        let url2 = 'http://localhost:3000/dashboard/api/productos'
+        fetch(url2)
+            .then( response => response.json() )
+            .then( datos => mostrar(datos) )
+            .catch( error => console.log(error) )
+
+
+        const mostrar = (articulos) =>{
+            articulos.forEach(element => {
+                myChart2.data['labels'].push(element.nombre)
+                myChart2.data['datasets'][0].data.push(element.precio)
+                myChart2.update()
+            });
+            console.log(myChart2.data)
+        }  
+    </script>
     
     
   </main>
